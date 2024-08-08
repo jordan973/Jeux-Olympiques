@@ -1,0 +1,30 @@
+.navbar{
+    width: 100%;
+    background-color: black;
+    color: white;
+    display: flex;
+    justify-content: center;
+}
+
+.navlink{
+    height: 60px;
+    width: 120px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.navlink:hover{
+    background-color: rgb(38, 38, 38);
+    transition: 0.50s ease;
+}
+
+.navlink span{
+    color: white;
+}
+
+.navlink:hover span {
+    color: #D6C279;
+    transition: 0.5s ease;
+}
