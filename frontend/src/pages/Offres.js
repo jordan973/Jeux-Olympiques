@@ -1,14 +1,15 @@
 import React from "react";
-import Header from '../components/Header.js';
-import Footer from '../components/Footer.js';
 import './Offres.css';
+import Header from '../components/Header.js';
+import Billet from "../components/Billet.js";
+import Footer from '../components/Footer.js';
 
 function Offres(){
     return(
         <div className="offres">
             <img src="./img/olympics.png" alt="Olympic Games" className="navbar-image" />
             <Header />
-
+            <Billet />
             <Footer />
         </div>
     )

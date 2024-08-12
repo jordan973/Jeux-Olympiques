@@ -1,0 +1,47 @@
+.offers-section{
+    padding: 20px;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 40px;
+    font-size: 2em;
+    color: #ffffff;
+    background-color: black;
+    width: auto;
+    border-radius: 2rem;
+    padding: 10px;
+}
+
+.offers-grid{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;  
+}
+
+.offer-card {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 16px;
+    text-align: center;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    justify-content: space-between;
+}
+
+.offer-image{
+    width: 100%;
+    border-radius: 10px;
+}
+
+.offer-title {
+    font-size: 2em;
+    margin: 12px 0;
+}
+
+.offer-description {
+    font-size: 1em;
+    color: #555;
+}

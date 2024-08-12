@@ -5,7 +5,7 @@
 .header-image{
   width: 100%;
   overflow: hidden;
-  max-height: 500px;
+  max-height: 600px;
   object-fit: cover;
 }
 
@@ -53,8 +53,34 @@
   width: auto;
 }
 
-.events-section {
-  padding: 40px;
+.intro-content {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  background-color: #f5f5f5;
+  border-radius: 10px;
+  padding: 30px;
+  gap: 30px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  font-family: 'Garamond', sans-serif;
+}
+
+.intro-description {
+  color: black;
+  text-align: justify;
+  line-height: 1.8rem;
+  font-size: 1.4rem;
+  flex: 1;
+}
+
+.histoire-image {
+  flex-shrink: 0;
+  width: 450px;
+  border:#D6C279 solid 7.5px;
+}
+
+.intro-section, .events-section {
+  padding: 20px;
 }
   
 .section-title {

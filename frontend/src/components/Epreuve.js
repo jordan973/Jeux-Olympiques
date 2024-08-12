@@ -84,6 +84,15 @@ function Epreuve(){
                 <img src="/img/paris.jpg" alt="Paris 2024" className='paris-image' />
             </div>
             <main>
+              <section className='intro-section'>
+                <h2 className="section-title">L'Histoire</h2>
+                <div className='intro-content'>
+                  <p className='intro-description'>Les Jeux Olympiques trouvent leur origine dans la <b>Grèce antique</b>, où ils étaient organisés en l'honneur de Zeus à Olympie, d'où ils tirent leur nom. Ces premiers jeux, qui remontent à <b>776 av. J.-C.</b>, étaient à l'époque un événement <b>religieux et sportif majeur</b>, réunissant les cités-États grecques dans une trêve sacrée pour célébrer la force, l'endurance et l'esprit de compétition des athlètes.<br/><br/>
+                  Après plusieurs siècles de gloire, les Jeux Olympiques antiques furent interdits en <b>393 apr. J.-C.</b> par l'empereur romain <b>Théodose Ier</b>, marquant ainsi la fin de cette tradition. Il fallut attendre le <b>XIXe siècle</b> pour que l'idée des Jeux Olympiques soit ressuscitée par le baron <b>Pierre de Coubertin</b>, un éducateur français visionnaire. En 1896, les premiers Jeux Olympiques modernes furent organisés à <b>Athènes</b>, renouant avec les racines grecques de la compétition tout en intégrant une perspective internationale.<br/><br/>
+                  Depuis lors, les Jeux Olympiques ont évolué pour devenir l'un des événements les plus emblématiques du monde, accueillant des milliers d'athlètes représentant presque tous les pays du globe. Les Jeux sont aujourd'hui un <b>symbole de paix, d'unité et de fraternité</b>, mettant en avant non seulement les <b>prouesses physiques</b>, mais aussi <b>l'esprit de collaboration et de respect mutuel</b> entre les nations.</p>
+                  <img src='/img/history.jpg' alt='Histoire des JO' className='histoire-image' />
+                </div>
+              </section>
               <section className='events-section'>
                 <h2 className="section-title">Les Épreuves</h2>
                 <div className="events-grid">
