@@ -20,6 +20,8 @@ public class Utilisateurs {
 	private String role;
 	@Column(name = "mot_de_passe")
 	private String motDePasse;
+	@Column(name = "cle_inscription")
+    private String cleInscription;
 	
 	public Long getId() {
 		return id;
@@ -67,6 +69,14 @@ public class Utilisateurs {
 	
 	public void setMotDePasse(String motDePasse) {
 		this.motDePasse = motDePasse;
+	}
+	
+	public String getCleInscription() {
+		return cleInscription;
+	}
+	
+	public void setCleInscription(String cleInscription) {
+		this.cleInscription = cleInscription;
 	}
 	
 }
