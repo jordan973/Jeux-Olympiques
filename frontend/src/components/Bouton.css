@@ -6,6 +6,7 @@
     display: inline-block;
     cursor: pointer;
     border-radius: 8px;
+    text-align: center;
 }
 
 .bouton:hover{

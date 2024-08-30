@@ -9,7 +9,9 @@ function Offres(){
         <div className="offres">
             <img src="./img/olympics.png" alt="Olympic Games" className="navbar-image" />
             <Header />
-            <Billet />
+            <main>
+                <Billet />
+            </main>
             <Footer />
         </div>
     )

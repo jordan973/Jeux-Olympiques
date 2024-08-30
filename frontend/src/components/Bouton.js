@@ -1,9 +1,9 @@
 import React from 'react';
 import './Bouton.css';
 
-function Bouton(){
+function Bouton({text, type="button"}){
     return(
-        <bouton className='bouton'>Commander</bouton>
+        <button className='bouton' type={type}>{text}</button>
     )
 }
 

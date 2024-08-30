@@ -84,7 +84,7 @@ function Epreuve(){
                 <img src="/img/paris.jpg" alt="Paris 2024" className='paris-image' />
             </div>
             <main>
-              <section className='intro-section'>
+              <section>
                 <h2 className="section-title">L'Histoire</h2>
                 <div className='intro-content'>
                   <p className='intro-description'>Les Jeux Olympiques trouvent leur origine dans la <b>Grèce antique</b>, où ils étaient organisés en l'honneur de Zeus à Olympie, d'où ils tirent leur nom. Ces premiers jeux, qui remontent à <b>776 av. J.-C.</b>, étaient à l'époque un événement <b>religieux et sportif majeur</b>, réunissant les cités-États grecques dans une trêve sacrée pour célébrer la force, l'endurance et l'esprit de compétition des athlètes.<br/><br/>

@@ -26,8 +26,7 @@ function Billet(){
     ]
 
     return(
-        <main>
-            <section className='offers-section'>
+            <section>
                 <h2 className="section-title">Les Offres</h2>
                 <div className='offers-grid'>
                     {offers.map((offer, index) => (
@@ -36,12 +35,11 @@ function Billet(){
                             <h1 className='offer-title'>{offer.title}</h1>
                             <p className='offer-description'>{offer.description}</p>
                             <h3 className='offer-price'>{offer.price}</h3>
-                            <Bouton />
+                            <Bouton text="Commander"/>
                         </div>
                     ))}
                 </div>
             </section>
-        </main>
     )
 }
 

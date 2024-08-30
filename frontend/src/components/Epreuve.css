@@ -79,19 +79,8 @@
   border:#D6C279 solid 7.5px;
 }
 
-.intro-section, .events-section {
+.events-section {
   padding: 20px;
-}
-  
-.section-title {
-  text-align: center;
-  margin-bottom: 40px;
-  font-size: 2em;
-  color: #ffffff;
-  background-color: black;
-  width: auto;
-  border-radius: 2rem;
-  padding: 10px;
 }
   
 .events-grid {
