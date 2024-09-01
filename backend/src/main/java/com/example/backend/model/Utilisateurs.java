@@ -4,6 +4,9 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+
+import java.util.Date;
+
 import jakarta.persistence.Column;
 
 @Entity
@@ -22,6 +25,9 @@ public class Utilisateurs {
 	private String motDePasse;
 	@Column(name = "cle_inscription")
     private String cleInscription;
+	private String token;
+	@Column(name = "creation_session")
+	private Date creationSession;
 	
 	public Long getId() {
 		return id;
@@ -78,5 +84,20 @@ public class Utilisateurs {
 	public void setCleInscription(String cleInscription) {
 		this.cleInscription = cleInscription;
 	}
+
+	public String getToken() {
+		return token;
+	}
+
+	public void setToken(String token) {
+		this.token = token;
+	}
 	
+	public Date getCreationSession() {
+		return creationSession;
+	}
+
+	public void setCreationSession(Date creationSession) {
+		this.creationSession = creationSession;
+	}	
 }
