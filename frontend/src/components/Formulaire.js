@@ -3,7 +3,7 @@ import './Formulaire.css';
 import Bouton from './Bouton';
 import { useState } from 'react';
 
-function Formulaire({title, submit, buttonText, linkText, linkHref}){
+function Formulaire({title, nameFields, submit, buttonText, linkDesc, linkHref, linkText}){
 
     const [prenom, setPrenom] = useState('');
     const [nom, setNom] = useState('');
@@ -28,24 +28,28 @@ function Formulaire({title, submit, buttonText, linkText, linkHref}){
         <h2 className="section-title">Mon Compte</h2>
         <form onSubmit={handleSubmit} className="form-container">
             <h1>{title}</h1>
-            <div>
-                <label>Prénom :</label>
-                <input
-                    type="text"
-                    value={prenom}
-                    onChange={(e) => setPrenom(e.target.value)}
-                    required
-                />
-            </div>
-            <div>
-                <label>Nom :</label>
-                <input
-                    type="text"
-                    value={nom}
-                    onChange={(e) => setNom(e.target.value)}
-                    required
-                />
-            </div>
+            {nameFields && (
+                <>
+                    <div>
+                        <label>Prénom :</label>
+                        <input
+                            type="text"
+                            value={prenom}
+                            onChange={(e) => setPrenom(e.target.value)}
+                            required
+                        />
+                    </div>
+                    <div>
+                        <label>Nom :</label>
+                        <input
+                            type="text"
+                            value={nom}
+                            onChange={(e) => setNom(e.target.value)}
+                            required
+                        />
+                    </div>
+                </>
+            )}
             <div>
                 <label>Email :</label>
                 <input
@@ -65,7 +69,7 @@ function Formulaire({title, submit, buttonText, linkText, linkHref}){
                 />
             </div>
         <Bouton type="submit" text={buttonText}/>
-        <p className="connexion-link">{linkText}<a href={linkHref}>Me connecter</a></p>
+        <p className="connexion-link">{linkDesc}<a href={linkHref}>{linkText}</a></p>
       </form>
     </section>
     )

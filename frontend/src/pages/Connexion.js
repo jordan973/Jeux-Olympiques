@@ -1,11 +1,11 @@
 import React, { useEffect } from "react";
-import './Inscription.css';
+import './Connexion.css';
 import Header from '../components/Header.js';
 import Footer from '../components/Footer.js';
 import Formulaire from "../components/Formulaire.js";
 import { useNavigate } from "react-router-dom";
 
-function Inscription(){
+function Connexion(){
 
     const navigate = useNavigate();
 
@@ -18,9 +18,9 @@ function Inscription(){
 
     const apiUrl = process.env.REACT_APP_API_URL;
 
-    const inscriptionSubmit = async (user) => {
+    const connexionSubmit = async (user) => {
         try {
-            const response = await fetch(`${apiUrl}/users/inscription`, {
+            const response = await fetch(`${apiUrl}/users/connexion`, {
               method: 'POST',
               headers: {
                 'Content-Type': 'application/json',
@@ -29,9 +29,12 @@ function Inscription(){
             });
       
             if (response.ok) {
-              alert('Inscription réussie !');
+                const token = await response.text();
+                alert('Connexion réussie !');
+                localStorage.setItem('token', token);
+                window.location.href = "/"; 
             } else {
-              alert('Erreur lors de l\'inscription.');
+                alert('Email ou mot de passe incorrect.');
             }
           } catch (error) {
             console.error('Erreur:', error);
@@ -45,13 +48,13 @@ function Inscription(){
             <Header />
             <main>
                 <Formulaire 
-                title="Inscription"
-                nameFields={true}
-                submit={inscriptionSubmit}
-                buttonText="S'inscrire"
-                linkDesc="Déjà inscrit ? "
-                linkHref="/connexion"
-                linkText="Me connecter"
+                title="Connexion"
+                nameFields={false}
+                submit={connexionSubmit}
+                buttonText="Se connecter"
+                linkDesc="Pas encore inscrit ? "
+                linkHref="/mon-compte"
+                linkText="S'inscrire"
                 />
             </main>
             <Footer />
@@ -59,4 +62,4 @@ function Inscription(){
     )
 }
 
-export default Inscription;
+export default Connexion;

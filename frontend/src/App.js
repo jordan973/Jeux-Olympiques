@@ -2,8 +2,9 @@ import React from "react";
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Home from './pages/Home';
 import Offres from './pages/Offres';
-import Compte from './pages/Inscription';
+import Inscription from './pages/Inscription';
 import './App.css';
+import Connexion from "./pages/Connexion";
 
 function App() {
     return (
@@ -11,7 +12,8 @@ function App() {
             <Routes>
                 <Route exact path='/' element={<Home />} />
                 <Route path='/offres' element={<Offres />} />
-                <Route path='/mon-compte' element={<Compte />} />
+                <Route path='/mon-compte' element={<Inscription />} />
+                <Route path='/connexion' element={<Connexion />} />
             </Routes>
         </Router>
     );
