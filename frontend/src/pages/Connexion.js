@@ -29,10 +29,13 @@ function Connexion(){
             });
       
             if (response.ok) {
-                const token = await response.text();
-                alert('Connexion réussie !');
+                const infosUtilisateur = await response.json();
+                const { token, prenom, nom, email } = infosUtilisateur;
+
                 localStorage.setItem('token', token);
-                window.location.href = "/"; 
+                localStorage.setItem('user', JSON.stringify({ prenom, nom, email }));
+                
+                navigate("/profil"); 
             } else {
                 alert('Email ou mot de passe incorrect.');
             }

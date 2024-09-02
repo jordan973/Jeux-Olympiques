@@ -5,6 +5,8 @@ import Offres from './pages/Offres';
 import Inscription from './pages/Inscription';
 import './App.css';
 import Connexion from "./pages/Connexion";
+import Profil from './pages/Profil';
+import PrivateRoute from './components/PrivateRoute';
 
 function App() {
     return (
@@ -14,6 +16,8 @@ function App() {
                 <Route path='/offres' element={<Offres />} />
                 <Route path='/mon-compte' element={<Inscription />} />
                 <Route path='/connexion' element={<Connexion />} />
+                <Route path="/profil" element={<PrivateRoute><Profil /></PrivateRoute>} 
+                />
             </Routes>
         </Router>
     );

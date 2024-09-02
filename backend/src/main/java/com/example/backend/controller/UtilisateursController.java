@@ -5,6 +5,9 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestMapping;
 import com.example.backend.model.Utilisateurs;
 import com.example.backend.service.UtilisateursService;
+
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -30,17 +33,16 @@ public class UtilisateursController {
 	}
 	
     @PostMapping("/connexion")
-    public ResponseEntity<String> loginUtilisateur(@RequestBody Utilisateurs utilisateur) {
-        
-    	try {
-        	String token = utilisateursService.connecterUtilisateur(utilisateur);
-            if (token != null) {
-                return ResponseEntity.ok(token);
+    public ResponseEntity<?> loginUtilisateur(@RequestBody Utilisateurs utilisateur) { 
+        try {
+            ResponseEntity<Map<String, Object>> response = utilisateursService.connecterUtilisateur(utilisateur);
+            if (response != null) {
+                return response;
             } else {
                 return ResponseEntity.status(401).body("Email ou mot de passe incorrect.");
             }
-    	} catch(Exception e) {
-    		return ResponseEntity.status(500).body("Erreur interne du serveur.");
-    	}
+        } catch (Exception e) {
+            return ResponseEntity.status(500).body("Erreur interne du serveur.");
+        }
     }
 }
