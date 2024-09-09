@@ -1,0 +1,82 @@
+.overlay-panier {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 999;
+}
+
+.fenetre-panier {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    width: 500px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    max-height: 550px;
+}
+
+.close-panier {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    font-size: 18px;
+    background: none;
+    border: none;
+}
+
+.panier-content {
+    overflow-y: auto;
+    max-height: 60vh;
+    padding-right: 10px;
+    margin-bottom: 10px;
+}
+
+.panier-title{
+    text-align: center;
+}
+
+.panier-item {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+.panier-price{
+    font-weight: bold;
+}
+
+.panier-quantite {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.reduce-quantity {
+    background-color: #000000;
+    border: none;
+    color: white;
+    padding: 5px 10px;
+    margin-left: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px;
+    height: 22px;
+}
+
+.reduce-quantity:hover {
+    background-color: #313131;
+    transition: 0.25s ease;
+}

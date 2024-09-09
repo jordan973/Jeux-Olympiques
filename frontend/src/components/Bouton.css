@@ -7,10 +7,22 @@
     cursor: pointer;
     border-radius: 8px;
     text-align: center;
+    border: none;
 }
 
 .bouton:hover{
     background-color: rgb(38, 38, 38);
     color: #D6C279;
     transition: 0.50s ease;
+}
+
+.bouton-disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+}
+
+.bouton-disabled:hover {
+    background-color: #cccccc;
+    color: white;
+    cursor: not-allowed;
 }

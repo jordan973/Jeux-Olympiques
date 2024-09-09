@@ -1,7 +1,5 @@
 import React, { useEffect } from "react";
 import './Connexion.css';
-import Header from '../components/Header.js';
-import Footer from '../components/Footer.js';
 import Formulaire from "../components/Formulaire.js";
 import { useNavigate } from "react-router-dom";
 
@@ -47,8 +45,6 @@ function Connexion(){
 
     return(
         <div className="offres">
-            <img src="./img/olympics.png" alt="Olympic Games" className="navbar-image" />
-            <Header />
             <main>
                 <Formulaire 
                 title="Connexion"
@@ -60,7 +56,6 @@ function Connexion(){
                 linkText="S'inscrire"
                 />
             </main>
-            <Footer />
         </div>
     )
 }

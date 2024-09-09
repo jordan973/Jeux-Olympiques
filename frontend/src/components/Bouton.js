@@ -1,9 +1,9 @@
 import React from 'react';
 import './Bouton.css';
 
-function Bouton({text, type="button", onClick}){
+function Bouton({text, type="button", onClick, disabled}){
     return(
-        <button className='bouton' type={type} onClick={onClick}>{text}</button>
+        <button className={`bouton ${disabled ? 'bouton-disabled' : ''}`} type={type} onClick={onClick} disabled={disabled}>{text}</button>
     )
 }
 

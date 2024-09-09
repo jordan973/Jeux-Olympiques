@@ -1,7 +1,5 @@
 import React, { useEffect } from "react";
 import './Inscription.css';
-import Header from '../components/Header.js';
-import Footer from '../components/Footer.js';
 import Formulaire from "../components/Formulaire.js";
 import { useNavigate } from "react-router-dom";
 
@@ -41,8 +39,6 @@ function Inscription(){
 
     return(
         <div className="offres">
-            <img src="./img/olympics.png" alt="Olympic Games" className="navbar-image" />
-            <Header />
             <main>
                 <Formulaire 
                 title="Inscription"
@@ -54,7 +50,6 @@ function Inscription(){
                 linkText="Me connecter"
                 />
             </main>
-            <Footer />
         </div>
     )
 }
