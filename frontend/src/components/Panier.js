@@ -12,6 +12,7 @@ function Panier({ isOpen, onClose, panier, setPanier }) {
     const redirectionCompte = () => {
         const token = localStorage.getItem('token');
         if (token) {
+            onClose();
             navigate('/paiement');
         } else {
             alert('Veuillez vous connecter pour procéder au paiement.');

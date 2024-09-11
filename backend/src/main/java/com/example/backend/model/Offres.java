@@ -1,7 +1,5 @@
 package com.example.backend.model;
 
-import java.math.BigDecimal;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -16,7 +14,7 @@ public class Offres {
 	@Column(name = "id_offre")
 	private Long id;
 	private String nom;
-	private BigDecimal prix;
+	private int prix;
 	private int stock;
 	
 	public Long getId() {
@@ -34,11 +32,11 @@ public class Offres {
 		this.nom = nom;
 	}
 
-	public BigDecimal getPrix() {
+	public int getPrix() {
 		return prix;
 	}
 
-	public void setPrix(BigDecimal prix) {
+	public void setPrix(int prix) {
 		this.prix = prix;
 	}
 

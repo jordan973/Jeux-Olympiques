@@ -4,9 +4,12 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 
 import java.util.Date;
+import java.util.Set;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 
 @Entity
@@ -28,6 +31,9 @@ public class Utilisateurs {
 	private String token;
 	@Column(name = "creation_session")
 	private Date creationSession;
+	
+	@OneToMany(mappedBy = "utilisateur", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<Commandes> commandes;
 	
 	public Long getId() {
 		return id;
@@ -99,5 +105,13 @@ public class Utilisateurs {
 
 	public void setCreationSession(Date creationSession) {
 		this.creationSession = creationSession;
-	}	
+	}
+	
+    public Set<Commandes> getCommandes() {
+        return commandes;
+    }
+
+    public void setCommandes(Set<Commandes> commandes) {
+        this.commandes = commandes;
+    }
 }
