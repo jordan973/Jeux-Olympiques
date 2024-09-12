@@ -11,6 +11,7 @@ import './App.css';
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Paiement from "./pages/Paiement";
+import Confirmation from "./pages/Confirmation";
 
 function App() {
 
@@ -66,6 +67,7 @@ function App() {
                 <Route path='/connexion' element={<Connexion />} />
                 <Route path="/profil" element={<PrivateRoute><Profil /></PrivateRoute>} />
                 <Route path="/paiement" element={<Paiement />} />
+                <Route path="/confirmation/:idCommande" element={<Confirmation />} />
             </Routes>
             <Footer />
         </Router>

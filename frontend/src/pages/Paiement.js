@@ -62,8 +62,10 @@ function Paiement() {
             });
 
             if (response.ok) {
+                const commandeSauvegardee = await response.json();
+                const idCommande = commandeSauvegardee.id;
                 localStorage.removeItem('panier');
-                navigate('/confirmation');
+                navigate(`/confirmation/${idCommande}`);
             } else {
                 const erreur = await response.json();
                 alert(`Erreur lors du paiement: ${erreur.message || 'Une erreur est survenue.'}`);
