@@ -10,7 +10,6 @@ function Profil() {
         
         useEffect(() => {
             const infos = localStorage.getItem('user');
-            console.log('Informations récupérées depuis localStorage:', infos);
             if (infos) {
                 setDetails(JSON.parse(infos));
             }

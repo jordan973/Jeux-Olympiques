@@ -10,6 +10,7 @@ import PrivateRoute from './components/PrivateRoute';
 import './App.css';
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import Paiement from "./pages/Paiement";
 
 function App() {
 
@@ -64,6 +65,7 @@ function App() {
                 <Route path='/mon-compte' element={<Inscription />} />
                 <Route path='/connexion' element={<Connexion />} />
                 <Route path="/profil" element={<PrivateRoute><Profil /></PrivateRoute>} />
+                <Route path="/paiement" element={<Paiement />} />
             </Routes>
             <Footer />
         </Router>

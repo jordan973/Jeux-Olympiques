@@ -50,6 +50,7 @@ public class UtilisateursService {
             
             Map<String, Object> response = new HashMap<>();
             response.put("token", token);
+            response.put("id", utilisateurExistant.getId());
             response.put("prenom", utilisateurExistant.getPrenom());
             response.put("nom", utilisateurExistant.getNom());
             response.put("email", utilisateurExistant.getEmail());

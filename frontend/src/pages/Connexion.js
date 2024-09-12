@@ -28,10 +28,10 @@ function Connexion(){
       
             if (response.ok) {
                 const infosUtilisateur = await response.json();
-                const { token, prenom, nom, email } = infosUtilisateur;
+                const { token, id, prenom, nom, email } = infosUtilisateur;
 
                 localStorage.setItem('token', token);
-                localStorage.setItem('user', JSON.stringify({ prenom, nom, email }));
+                localStorage.setItem('user', JSON.stringify({id, prenom, nom, email }));
                 
                 navigate("/profil"); 
             } else {
