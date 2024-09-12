@@ -9,6 +9,8 @@ import jakarta.persistence.OneToMany;
 import java.util.Date;
 import java.util.Set;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 
@@ -31,7 +33,7 @@ public class Utilisateurs {
 	private String token;
 	@Column(name = "creation_session")
 	private Date creationSession;
-	
+	@JsonIgnore
 	@OneToMany(mappedBy = "utilisateur", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<Commandes> commandes;
 	

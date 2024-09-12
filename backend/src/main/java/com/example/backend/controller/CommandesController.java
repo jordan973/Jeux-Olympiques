@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/commandes")
@@ -24,6 +25,16 @@ public class CommandesController {
             return ResponseEntity.ok(commandeSauvegardee);
         } catch (Exception e) {
             return ResponseEntity.status(400).body(null);
+        }
+    }
+    
+    @GetMapping("/{idCommande}")
+    public ResponseEntity<Commandes> recupererCommande(@PathVariable Long idCommande) {
+        Optional<Commandes> commande = commandesService.recupererCommande(idCommande);
+        if (commande.isPresent()) {
+            return ResponseEntity.ok(commande.get());
+        } else {
+            return ResponseEntity.status(404).body(null); 
         }
     }
 }

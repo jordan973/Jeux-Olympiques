@@ -18,6 +18,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 @Service
 public class CommandesService {
@@ -97,5 +98,10 @@ public class CommandesService {
         }
 
         return commandeSauvegardee;
+    }
+    
+    public Optional<Commandes> recupererCommande(Long idCommande) {
+        
+    	return commandesRepository.findById(idCommande);
     }
 }
