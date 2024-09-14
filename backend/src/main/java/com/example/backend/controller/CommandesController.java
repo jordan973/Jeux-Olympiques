@@ -18,6 +18,7 @@ public class CommandesController {
     @Autowired
     private CommandesService commandesService;
 
+    // Endpoint pour le paiement
     @PostMapping
     public ResponseEntity<Commandes> creerCommande(@RequestParam Long idUtilisateur, @RequestBody List<Map<String, Object>> listeOffres) {
         try {
@@ -28,11 +29,23 @@ public class CommandesController {
         }
     }
     
+    // Endpoint pour la confirmation de commande
     @GetMapping("/{idCommande}")
-    public ResponseEntity<Commandes> recupererCommande(@PathVariable Long idCommande) {
-        Optional<Commandes> commande = commandesService.recupererCommande(idCommande);
+    public ResponseEntity<Commandes> recupererCommandeParIdCommande(@PathVariable Long idCommande) {
+        Optional<Commandes> commande = commandesService.recupererCommandeParIdCommande(idCommande);
         if (commande.isPresent()) {
             return ResponseEntity.ok(commande.get());
+        } else {
+            return ResponseEntity.status(404).body(null); 
+        }
+    }
+    
+    // Endpoint pour la confirmation de commande
+    @GetMapping("/utilisateur/{idUtilisateur}")
+    public ResponseEntity<List<Commandes>> recupererCommandeParIdUtilisateur(@PathVariable Long idUtilisateur) {
+        List<Commandes> commandes = commandesService.recupererCommandeParIdUtilisateur(idUtilisateur);
+        if (!commandes.isEmpty()) {
+            return ResponseEntity.ok(commandes);
         } else {
             return ResponseEntity.status(404).body(null); 
         }

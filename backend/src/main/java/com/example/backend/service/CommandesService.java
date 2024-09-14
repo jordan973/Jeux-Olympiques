@@ -100,8 +100,15 @@ public class CommandesService {
         return commandeSauvegardee;
     }
     
-    public Optional<Commandes> recupererCommande(Long idCommande) {
+    // Fonction pour récupérer une commande avec l'ID commande
+    public Optional<Commandes> recupererCommandeParIdCommande(Long idCommande) {
         
     	return commandesRepository.findById(idCommande);
+    }
+    
+    // Fonction pour récupérer une commande avec l'ID commande
+    public List<Commandes> recupererCommandeParIdUtilisateur(Long idUtilisateur) {
+        
+    	return commandesRepository.findByUtilisateurId(idUtilisateur);
     }
 }

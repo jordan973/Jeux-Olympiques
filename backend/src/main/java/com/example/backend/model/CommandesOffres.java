@@ -1,5 +1,7 @@
 package com.example.backend.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import jakarta.persistence.*;
 
 @Entity
@@ -8,6 +10,7 @@ public class CommandesOffres {
 
     @EmbeddedId
     private CommandesOffresId id;
+    @JsonBackReference
     @ManyToOne
     @MapsId("idCommande")
     @JoinColumn(name = "id_commande")
