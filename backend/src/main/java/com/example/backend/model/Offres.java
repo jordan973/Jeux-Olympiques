@@ -16,6 +16,7 @@ public class Offres {
 	private String nom;
 	private int prix;
 	private int stock;
+	private int vente;
 	
 	public Long getId() {
 		return id;
@@ -46,5 +47,13 @@ public class Offres {
 
 	public void setStock(int stock) {
 		this.stock = stock;
+	}
+
+	public int getVente() {
+		return vente;
+	}
+
+	public void setVente(int vente) {
+		this.vente = vente;
 	}
 }

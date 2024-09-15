@@ -82,6 +82,7 @@ public class CommandesService {
             }
 
             offreExistante.setStock(offreExistante.getStock() - quantite);
+            offreExistante.setVente(offreExistante.getVente() + quantite);
             offresRepository.save(offreExistante);
             
             CommandesOffresId commandesOffresId = new CommandesOffresId(commandeSauvegardee.getId(), offreExistante.getId());
