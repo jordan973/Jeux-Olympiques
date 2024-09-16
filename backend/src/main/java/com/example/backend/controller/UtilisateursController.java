@@ -7,6 +7,7 @@ import com.example.backend.model.Utilisateurs;
 import com.example.backend.service.UtilisateursService;
 
 import java.util.Map;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -45,4 +46,14 @@ public class UtilisateursController {
             return ResponseEntity.status(500).body("Erreur interne du serveur.");
         }
     }
+    
+    @GetMapping("/profile/{idUtilisateur}")
+    public ResponseEntity<Utilisateurs> getUserProfile(@PathVariable Long idUtilisateur) {
+        Optional<Utilisateurs> utilisateur = utilisateursService.recupererUtilisateurParId(idUtilisateur);
+        if (utilisateur.isPresent()) {
+            return ResponseEntity.ok(utilisateur.get());
+        } else {
+            return ResponseEntity.status(404).body(null);
+        }
+    }    
 }

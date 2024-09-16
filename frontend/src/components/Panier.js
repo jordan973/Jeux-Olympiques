@@ -42,22 +42,22 @@ function Panier({ isOpen, onClose, panier, setPanier }) {
 
     return (
         <>
-            <div className="overlay-panier" onClick={onClose}></div>
-            <div className="fenetre-panier">
-                <button onClick={onClose} className="close-panier">✖</button>
-                <h1 className="panier-title">Mon Panier</h1>
+            <div className='overlay-panier' onClick={onClose}></div>
+            <div className='fenetre-panier'>
+                <button onClick={onClose} className='close-panier'>✖</button>
+                <h1 className='panier-title'>Mon Panier</h1>
                 <div className='panier-content'>
                 {panier.length === 0 ? (
                     <p>Votre panier est vide.</p>
                 ) : (
                     panier.map((offre, index) => (
                         <div key={index} className='panier-item'>
-                            <h2>Offre {offre.titre}</h2>
+                            <h2>Offre {offre.nom}</h2>
                             <p>Prix : <span className='panier-price'>{offre.prix} €</span></p>
-                            <div className="panier-quantite">
+                            <div className='panier-quantite'>
                                 <span>Quantité : {offre.quantite} </span>
-                                <button onClick={() => reduireQuantite(index)} className="reduce-quantity">
-                                    <i className="fas fa-minus"></i>
+                                <button onClick={() => reduireQuantite(index)} className='reduce-quantity'>
+                                    <i className='fas fa-minus'></i>
                                 </button>
                             </div>
                         </div>
@@ -65,7 +65,7 @@ function Panier({ isOpen, onClose, panier, setPanier }) {
                 )}
                     <p>Total : {calculerPrixTotal()} €</p>
                 </div>
-                <Bouton text="Payer" onClick={redirectionCompte} disabled={panier.length === 0} />
+                <Bouton text='Payer' onClick={redirectionCompte} disabled={panier.length === 0} />
             </div>
         </>
     );

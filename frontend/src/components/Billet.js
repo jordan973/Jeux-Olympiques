@@ -1,45 +1,48 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './Billet.css';
 import Bouton from './Bouton';
 import Alerte from './Alerte';
 
 function Billet({ajouterAuPanier, visible, message, type, onClose}) {
+    const [offres, setOffres] = useState([]);
 
-    const offres = [
-        {
-            id: 1,
-            image: '/img/solo.jpg',
-            titre: 'Solo',
-            description: 'L\'offre Solo est idéale pour les passionnés de sport souhaitant vivre les Jeux Olympiques en toute liberté.',
-            prix: '49'
-        },
-        {
-            id: 2,
-            image: '/img/duo.jpg',
-            titre: 'Duo',
-            description: 'Vivez l\'excitation des Jeux Olympiques à deux avec l\'offre Duo, à un tarif préférentiel pour partager des moments inoubliables.',
-            prix: '89'
-        },
-        {
-            id: 3,
-            image: '/img/family.jpg',
-            titre: 'Familiale',
-            description: 'Vivez les Jeux Olympiques en famille avec l\'offre Familiale, conçue pour 4 personnes, et profitez de tarifs réduits.',
-            prix: '169'
-        }
-    ];
+    const apiUrl = process.env.REACT_APP_API_URL;
+
+    useEffect(() => {
+        fetchOffres();
+    }, []);
+
+        // Fonction pour récupérer les offres
+        const fetchOffres = () => {
+            fetch(`${apiUrl}/offres`, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                }
+            })
+            .then(response => response.json())
+            .then((data) => {
+                if (Array.isArray(data)) {
+                    const sortedData = data.sort((a, b) => a.id - b.id);
+                    setOffres(sortedData);
+                } else {
+                    console.error('Les données reçues ne sont pas un tableau:', data);
+                    setOffres([]);
+                }
+            })
+            .catch(error => console.error('Erreur lors de la récupération des offres :', error));
+        };
 
     return (
         <section>
              {visible && (
                 <Alerte message={message} type={type} onClose={onClose} />
             )}
-            <h2 className="section-title">Les Offres</h2>
+            <h2 className='section-title'>Les Offres</h2>
             <div className='offers-grid'>
                 {offres.map((offre) => (
                     <div key={offre.id} className='offer-card'>
-                        <img src={offre.image} alt='Offre' className='offer-image'/>
-                        <h1 className='offer-title'>{offre.titre}</h1>
+                        <h1 className='offer-title'>{offre.nom}</h1>
                         <p className='offer-description'>{offre.description}</p>
                         <h3 className='offer-price'>{offre.prix}€</h3>
                         <Bouton text="Ajouter au panier" onClick={() => ajouterAuPanier(offre)} />

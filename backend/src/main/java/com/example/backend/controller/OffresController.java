@@ -13,6 +13,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/offres")
+@CrossOrigin(origins = "http://localhost:3000")
 public class OffresController {
 
     @Autowired
@@ -51,7 +52,7 @@ public class OffresController {
     }
 
     // Supprimer une offre
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/{idOffre}")
     public ResponseEntity<Void> supprimerOffre(@PathVariable Long idOffre, @RequestParam Long idUtilisateur) {
         if (!offresService.isAdmin(idUtilisateur)) {
             return ResponseEntity.status(HttpStatus.FORBIDDEN).build();

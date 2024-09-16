@@ -60,4 +60,8 @@ public class UtilisateursService {
         
         return null;
     }
+    
+    public Optional<Utilisateurs> recupererUtilisateurParId(Long id) {
+        return utilisateursRepository.findById(id);
+    }
 }
