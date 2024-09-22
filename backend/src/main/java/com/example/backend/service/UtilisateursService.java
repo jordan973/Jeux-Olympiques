@@ -4,8 +4,10 @@ import com.example.backend.model.Utilisateurs;
 import com.example.backend.model.GenerateurCle;
 import com.example.backend.repository.UtilisateursRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import java.util.Date;
 import java.util.HashMap;
@@ -32,33 +34,40 @@ public class UtilisateursService {
         String cleInscription = generateurCle.genererCle();
         utilisateur.setCleInscription(cleInscription);
         
+        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+        String passwordHashe = passwordEncoder.encode(utilisateur.getMotDePasse());
+        utilisateur.setMotDePasse(passwordHashe);
+        
+        
         return utilisateursRepository.save(utilisateur);
     }
     
     public ResponseEntity<Map<String, Object>> connecterUtilisateur(Utilisateurs utilisateur) {
-
         Optional<Utilisateurs> user = utilisateursRepository.findByEmail(utilisateur.getEmail());
-        
-        if (user.isPresent() && user.get().getMotDePasse().equals(utilisateur.getMotDePasse())) {
-            String token = UUID.randomUUID().toString();
-            
+
+        if (user.isPresent()) {
             Utilisateurs utilisateurExistant = user.get();
-            utilisateurExistant.setToken(token);  
-            utilisateurExistant.setCreationSession(new Date());
+            BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
-            utilisateursRepository.save(utilisateurExistant);
-            
-            Map<String, Object> response = new HashMap<>();
-            response.put("token", token);
-            response.put("id", utilisateurExistant.getId());
-            response.put("prenom", utilisateurExistant.getPrenom());
-            response.put("nom", utilisateurExistant.getNom());
-            response.put("email", utilisateurExistant.getEmail());
+            if (passwordEncoder.matches(utilisateur.getMotDePasse(), utilisateurExistant.getMotDePasse())) {
+                String token = UUID.randomUUID().toString();
+                
+                utilisateurExistant.setToken(token);
+                utilisateurExistant.setCreationSession(new Date());
 
-            return ResponseEntity.ok(response);
+                utilisateursRepository.save(utilisateurExistant);
+                
+                Map<String, Object> response = new HashMap<>();
+                response.put("token", token);
+                response.put("id", utilisateurExistant.getId());
+                response.put("prenom", utilisateurExistant.getPrenom());
+                response.put("nom", utilisateurExistant.getNom());
+                response.put("email", utilisateurExistant.getEmail());
+
+                return ResponseEntity.ok(response);
+            }
         }
-        
-        return null;
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(null);
     }
     
     public Optional<Utilisateurs> recupererUtilisateurParId(Long id) {

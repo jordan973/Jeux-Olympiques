@@ -28,6 +28,7 @@ function Inscription(){
       
             if (response.ok) {
               alert('Inscription réussie !');
+              navigate("/connexion"); 
             } else {
               alert('Erreur lors de l\'inscription.');
             }
