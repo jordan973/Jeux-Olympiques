@@ -31,3 +31,15 @@ section{
     border-radius: 2rem;
     padding: 10px;
 }
+
+@media (max-width: 768px) {
+    main {
+      padding: 0 5%;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    main {
+      padding: 0 2%;
+    }
+  }

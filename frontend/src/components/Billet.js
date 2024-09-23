@@ -6,7 +6,7 @@ import Alerte from './Alerte';
 function Billet({ajouterAuPanier, visible, message, type, onClose}) {
     const [offres, setOffres] = useState([]);
 
-    const apiUrl = process.env.REACT_APP_API_URL;
+    const apiUrl = process.env.REACT_APP_API_URL || 'https://jeux-olympiques-5qjp.onrender.com/api';
 
     useEffect(() => {
         fetchOffres();

@@ -206,9 +206,9 @@ function Profil() {
                                 <tbody>
                                     {commandes.map((commande, index) => (
                                         <tr key={index}>
-                                            <td>#{commande.id}</td>
-                                            <td>{commande.montant}€</td>
-                                            <td>{new Date(commande.date).toLocaleDateString()}</td>
+                                            <td data-label="ID Commande">#{commande.id}</td>
+                                            <td data-label="Montant">{commande.montant}€</td>
+                                            <td data-label="Date">{new Date(commande.date).toLocaleDateString()}</td>
                                             <td className='flex-btn'>
                                                 <button 
                                                     className='telecharger-billet-btn'
@@ -281,11 +281,11 @@ function Profil() {
                                                     <tbody>
                                                         {offres.map(offre => (
                                                             <tr key={offre.id}>
-                                                                <td>#{offre.id}</td>
-                                                                <td>{offre.nom}</td>
-                                                                <td>{offre.prix}€</td>
-                                                                <td>{offre.stock}</td>
-                                                                <td>{offre.vente}</td>
+                                                                <td data-label="ID Offre">#{offre.id}</td>
+                                                                <td data-label="Nom">{offre.nom}</td>
+                                                                <td data-label="Prix">{offre.prix}€</td>
+                                                                <td data-label="Stock">{offre.stock}</td>
+                                                                <td data-label="Ventes">{offre.vente}</td>
                                                                 <td className='flex-btn'>
                                                                     <button 
                                                                         className='modifier-offre-btn'

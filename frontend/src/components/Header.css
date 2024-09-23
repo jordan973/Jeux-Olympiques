@@ -1,12 +1,18 @@
-.navbar{
+.navbar {
     width: 100%;
     background-color: black;
     color: white;
     display: flex;
     justify-content: center;
+    align-items: center;
+    position: relative;
 }
 
-.navlink{
+.menu-principal {
+    display: flex;
+}
+
+.navlink, .burger-menu{
     height: 60px;
     width: 120px;
     display: flex;
@@ -15,12 +21,12 @@
     cursor: pointer;
 }
 
-.navlink:hover{
+.navlink:hover {
     background-color: rgb(38, 38, 38);
     transition: 0.50s ease;
 }
 
-.navlink span{
+.navlink span {
     color: white;
 }
 
@@ -29,7 +35,7 @@
     transition: 0.5s ease;
 }
 
-.navlinkPanier{
+.navlinkPanier {
     height: 60px;
     width: 110px;
     display: flex;
@@ -45,11 +51,88 @@
     gap: 5px;
 }
 
-.navlinkPanier i{
+.navlinkPanier i {
     font-size: 20px;
 }
 
-.navlinkPanier:hover{
+.navlinkPanier:hover {
     background-color: rgb(38, 38, 38);
     transition: 0.50s ease;
+}
+
+.burger-menu {
+    display: none;
+    cursor: pointer;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.bar {
+    width: 30px;
+    height: 3px;
+    background-color: white;
+    transition: 0.5s ease;
+}
+
+.burger-menu.open .bar:nth-child(2) {
+    opacity: 0;
+}
+
+.burger-menu.open .bar:nth-child(1) {
+    transform: translateY(9px) rotate(45deg);
+}
+
+.burger-menu.open .bar:nth-child(3) {
+    transform: translateY(-9px) rotate(-45deg);
+}
+
+.mobile-nav {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease-in-out;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    top: 60px;
+    right: 0;
+    background-color: black;
+    width: 100%;
+    z-index: 999;
+}
+
+.mobile-nav.open {
+    max-height: 500px;
+}
+
+.mobile-nav .navlink {
+    width: 100%;
+    text-align: center;
+    border-bottom: 1px solid #555;
+    gap: 5px;
+}
+
+.mobile-nav .navlink:hover {
+    background-color: rgb(38, 38, 38);
+}
+
+@media (max-width: 768px) {
+    .burger-menu {
+        display: flex;
+    }
+
+    .navbar {
+        justify-content: right;
+    }
+
+    .menu-principal {
+        display: none;
+    }
+
+    .navbar .navlinkPanier {
+        display: none;
+    }
+
+    .mobile-nav.open {
+        display: flex;
+    }
 }

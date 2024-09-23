@@ -20,6 +20,7 @@
     width: 100%;
     border-collapse: collapse;
     margin: 20px 0px;
+    display: table;
 }
 
 .commandes-tableau th, .commandes-tableau td {
@@ -144,4 +145,67 @@
 
 .btn-ajouter-offre:hover {
     background-color: #45a049;
+}
+
+@media (max-width: 655px) {
+    .commandes-tableau {
+        overflow-x: auto;
+        width: 100%;
+        max-width: none;
+    }
+
+    .commandes-tableau thead {
+        display: none;
+    }
+
+    .commandes-tableau tr {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 15px;
+        width: 100%;
+    }
+
+    .commandes-tableau td {
+        text-align: right;
+        position: relative;
+
+    }
+
+    .commandes-tableau td::before {
+        content: attr(data-label);
+        position: absolute;
+        left: 0;
+        padding-left: 15px;
+        text-align: left;
+        font-weight: bold;
+    }
+
+    .offres-tableau {
+        overflow-x: auto;
+    }
+
+    .offres-tableau thead {
+        display: none;
+    }
+
+    .offres-tableau tr {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 15px;
+        width: 100%;
+    }
+
+    .offres-tableau td {
+        text-align: right;
+        position: relative;
+    }
+
+    .offres-tableau td::before {
+        content: attr(data-label);
+        position: absolute;
+        left: 0;
+        padding-left: 15px;
+        text-align: left;
+        font-weight: bold;
+    }
 }

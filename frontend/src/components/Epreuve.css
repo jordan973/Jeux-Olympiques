@@ -17,7 +17,8 @@
 }
 
 .paris-image{
-  width: 400px;
+  max-width: 400px;
+  width: 100%;
   text-align: center;
 }
 
@@ -55,7 +56,6 @@
 
 .intro-content {
   display: flex;
-  flex-wrap: wrap;
   align-items: center;
   background-color: #f5f5f5;
   border-radius: 10px;
@@ -75,7 +75,8 @@
 
 .histoire-image {
   flex-shrink: 0;
-  width: 450px;
+  max-width: 450px;
+  width: 100%;
   border:#D6C279 solid 7.5px;
 }
 
@@ -112,4 +113,21 @@
 .event-description {
   font-size: 1em;
   color: #555;
-}  
+}
+
+@media (max-width: 1100px) {
+  .intro-content {
+    flex-direction: column;
+  }
+
+  .histoire-image {
+    width: 100%;
+    max-width: 450px;
+  }
+}
+
+@media (max-width: 768px) {
+  .events-grid {
+    grid-template-columns: 1fr;
+  }
+}
