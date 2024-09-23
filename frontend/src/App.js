@@ -66,8 +66,8 @@ function App() {
                 <Route path='/mon-compte' element={<Inscription />} />
                 <Route path='/connexion' element={<Connexion />} />
                 <Route path="/profil" element={<PrivateRoute><Profil /></PrivateRoute>} />
-                <Route path="/paiement" element={<Paiement />} />
-                <Route path="/confirmation/:idCommande" element={<Confirmation />} />
+                <Route path="/paiement" element={<PrivateRoute><Paiement /></PrivateRoute>} />
+                <Route path="/confirmation/:idCommande" element={<PrivateRoute><Confirmation /></PrivateRoute>} />
             </Routes>
             <Footer />
         </Router>
