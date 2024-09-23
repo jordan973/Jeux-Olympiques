@@ -7,7 +7,7 @@ function Confirmation() {
   const navigate = useNavigate();
   const { idCommande } = useParams();
   const [commande, setCommande] = useState(null);
-  const apiUrl = process.env.REACT_APP_API_URL;
+  const apiUrl = process.env.REACT_APP_API_URL || 'https://jeux-olympiques-5qjp.onrender.com/api';
 
   useEffect(() => {
     const fetchCommande = async () => {

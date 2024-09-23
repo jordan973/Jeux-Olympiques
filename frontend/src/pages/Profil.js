@@ -12,7 +12,7 @@ function Profil() {
     const [offreEnCours, setOffreEnCours] = useState(null);
 
     const navigate = useNavigate();
-    const apiUrl = process.env.REACT_APP_API_URL;
+    const apiUrl = process.env.REACT_APP_API_URL || 'https://jeux-olympiques-5qjp.onrender.com/api';
 
     useEffect(() => {
         const infos = localStorage.getItem('user');

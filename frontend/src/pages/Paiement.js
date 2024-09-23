@@ -10,8 +10,8 @@ function Paiement() {
     const [idUtilisateur, setIdUtilisateur] = useState(1);
     const [methodePaiement, setMethodePaiement] = useState('');
 
-    const apiUrl = process.env.REACT_APP_API_URL;
-
+    const apiUrl = process.env.REACT_APP_API_URL || 'https://jeux-olympiques-5qjp.onrender.com/api';
+    
     useEffect(() => {
         const panier = JSON.parse(localStorage.getItem('panier')) || [];
         if (panier.length === 0) {
