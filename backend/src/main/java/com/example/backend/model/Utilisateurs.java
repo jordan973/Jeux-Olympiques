@@ -8,6 +8,7 @@ import jakarta.persistence.OneToMany;
 
 import java.util.Date;
 import java.util.Set;
+import java.util.UUID;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -30,7 +31,7 @@ public class Utilisateurs {
 	private String motDePasse;
 	@Column(name = "cle_inscription")
     private String cleInscription;
-	private String token;
+	private UUID token;
 	@Column(name = "creation_session")
 	private Date creationSession;
 	@JsonIgnore
@@ -93,11 +94,11 @@ public class Utilisateurs {
 		this.cleInscription = cleInscription;
 	}
 
-	public String getToken() {
+	public UUID getToken() {
 		return token;
 	}
 
-	public void setToken(String token) {
+	public void setToken(UUID token) {
 		this.token = token;
 	}
 	

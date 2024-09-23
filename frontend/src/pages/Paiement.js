@@ -11,7 +11,7 @@ function Paiement() {
     const [methodePaiement, setMethodePaiement] = useState('');
 
     const apiUrl = process.env.REACT_APP_API_URL || 'https://jeux-olympiques-5qjp.onrender.com/api';
-    
+
     useEffect(() => {
         const panier = JSON.parse(localStorage.getItem('panier')) || [];
         if (panier.length === 0) {
@@ -51,7 +51,8 @@ function Paiement() {
             const response = await fetch(`${apiUrl}/commandes?idUtilisateur=${idUtilisateur}`, {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${localStorage.getItem('token')}`
                 },
                 body: JSON.stringify(
                     panier.map(offre => ({

@@ -29,7 +29,7 @@ function Profil() {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
-                // 'Authorization': `Bearer ${localStorage.getItem('token')}`
+                'Authorization': `Bearer ${localStorage.getItem('token')}`
             }
         })
         .then(response => response.json())
@@ -49,7 +49,7 @@ function Profil() {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
-                // 'Authorization': `Bearer ${localStorage.getItem('token')}`
+                'Authorization': `Bearer ${localStorage.getItem('token')}`
             }
         })
         .then(response => response.json())
@@ -63,6 +63,7 @@ function Profil() {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/pdf',
+                'Authorization': `Bearer ${localStorage.getItem('token')}`
             }
         })
         .then(response => {
@@ -126,6 +127,7 @@ function Profil() {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
+                'Authorization': `Bearer ${localStorage.getItem('token')}`
             },
             body: JSON.stringify(nouvelleOffre)
         })
@@ -143,6 +145,7 @@ function Profil() {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
+                'Authorization': `Bearer ${localStorage.getItem('token')}`
             },
             body: JSON.stringify(nouvelleOffre)
         })
@@ -174,6 +177,7 @@ function Profil() {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json',
+                'Authorization': `Bearer ${localStorage.getItem('token')}`
             }
         })
         .then(() => {

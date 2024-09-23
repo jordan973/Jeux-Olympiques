@@ -50,7 +50,7 @@ public class UtilisateursService {
             BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
             if (passwordEncoder.matches(utilisateur.getMotDePasse(), utilisateurExistant.getMotDePasse())) {
-                String token = UUID.randomUUID().toString();
+                UUID token = UUID.randomUUID();
                 
                 utilisateurExistant.setToken(token);
                 utilisateurExistant.setCreationSession(new Date());

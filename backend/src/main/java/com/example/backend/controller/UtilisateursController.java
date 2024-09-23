@@ -4,10 +4,14 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestMapping;
 import com.example.backend.model.Utilisateurs;
+import com.example.backend.security.ValidationToken;
 import com.example.backend.service.UtilisateursService;
+
+import jakarta.servlet.http.HttpServletResponse;
 
 import java.util.Map;
 import java.util.Optional;
+import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -21,6 +25,9 @@ public class UtilisateursController {
 	
 	@Autowired
     private UtilisateursService utilisateursService;
+	
+	@Autowired
+    private ValidationToken validationToken;
 	
 	@PostMapping("/inscription")
 	public ResponseEntity<Utilisateurs> inscrireUtilisateur(@RequestBody Utilisateurs utilisateur) {
@@ -48,12 +55,28 @@ public class UtilisateursController {
     }
     
     @GetMapping("/profile/{idUtilisateur}")
-    public ResponseEntity<Utilisateurs> getUserProfile(@PathVariable Long idUtilisateur) {
+    public ResponseEntity<Utilisateurs> getUserProfile(@PathVariable Long idUtilisateur, @RequestHeader(value = "Authorization", required = false) String authorizationHeader, HttpServletResponse response) {
+
+        if (authorizationHeader == null || !authorizationHeader.startsWith("Bearer ")) {
+            return ResponseEntity.status(HttpServletResponse.SC_UNAUTHORIZED).body(null);
+        }
+
+        String token = authorizationHeader.substring(7);
+
+        try {
+            UUID uuidToken = UUID.fromString(token);
+            if (!validationToken.verifierTokenDansBdd(uuidToken)) {
+                return ResponseEntity.status(HttpServletResponse.SC_UNAUTHORIZED).body(null);
+            }
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.status(HttpServletResponse.SC_UNAUTHORIZED).body(null);
+        }
+
         Optional<Utilisateurs> utilisateur = utilisateursService.recupererUtilisateurParId(idUtilisateur);
         if (utilisateur.isPresent()) {
             return ResponseEntity.ok(utilisateur.get());
         } else {
             return ResponseEntity.status(404).body(null);
         }
-    }    
+    }
 }
