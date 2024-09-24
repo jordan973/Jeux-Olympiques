@@ -137,4 +137,59 @@ class CommandesServiceTest {
         });
         assertEquals("Stock insuffisant pour l'offre avec l'id : " + offre.getId(), exception.getMessage());
     }
+    
+    @Test
+    void testRecupererCommandeParIdCommande_Existante() {
+        Long idCommande = 1L;
+        Commandes commande = new Commandes();
+        commande.setId(idCommande);
+
+        when(commandesRepository.findById(idCommande)).thenReturn(Optional.of(commande));
+        Optional<Commandes> resultat = commandesService.recupererCommandeParIdCommande(idCommande);
+
+        // Vérification du résultat
+        assertTrue(resultat.isPresent());
+        assertEquals(idCommande, resultat.get().getId());
+    }
+
+    @Test
+    void testRecupererCommandeParIdCommande_NonExistante() {
+        Long idCommande = 1L;
+
+        when(commandesRepository.findById(idCommande)).thenReturn(Optional.empty());
+        Optional<Commandes> resultat = commandesService.recupererCommandeParIdCommande(idCommande);
+
+        // Vérification du résultat
+        assertFalse(resultat.isPresent());
+    }
+    
+    @Test
+    void testRecupererCommandeParIdUtilisateur() {
+        Long idUtilisateur = 1L;
+        List<Commandes> commandes = new ArrayList<>();
+        Commandes commande = new Commandes();
+        commande.setId(1L);
+        commandes.add(commande);
+
+        when(commandesRepository.findByUtilisateurId(idUtilisateur)).thenReturn(commandes);
+        List<Commandes> resultat = commandesService.recupererCommandeParIdUtilisateur(idUtilisateur);
+
+     // Vérification du résultat
+        assertNotNull(resultat);
+        assertEquals(1, resultat.size());
+        assertEquals(idUtilisateur, resultat.get(0).getId()); // Vérifiez selon votre logique
+    }
+
+    @Test
+    void testRecupererCommandeParIdUtilisateur_UtilisateurSansCommandes() {
+        Long idUtilisateur = 1L;
+        List<Commandes> commandes = new ArrayList<>();
+
+        when(commandesRepository.findByUtilisateurId(idUtilisateur)).thenReturn(commandes);
+        List<Commandes> resultat = commandesService.recupererCommandeParIdUtilisateur(idUtilisateur);
+
+        // Vérification du résultat
+        assertNotNull(resultat);
+        assertTrue(resultat.isEmpty());
+    }
 }
