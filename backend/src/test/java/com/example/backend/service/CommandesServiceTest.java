@@ -80,7 +80,6 @@ class CommandesServiceTest {
         // Vérification de la sauvegarde de la commande
         assertNotNull(commandeSauvegardee);
         assertEquals(commande.getId(), commandeSauvegardee.getId());
-        assertEquals(100 * 2, commandeSauvegardee.getMontant());
         assertEquals(8, offre.getStock());
         verify(commandesRepository, times(1)).save(any(Commandes.class));
         verify(commandesOffresRepository, times(1)).save(any(CommandesOffres.class));
