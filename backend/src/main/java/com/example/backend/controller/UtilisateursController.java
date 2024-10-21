@@ -9,6 +9,8 @@ import com.example.backend.service.UtilisateursService;
 
 import jakarta.servlet.http.HttpServletResponse;
 
+import java.util.Collections;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 import java.util.UUID;
@@ -30,13 +32,14 @@ public class UtilisateursController {
     private ValidationToken validationToken;
 	
 	@PostMapping("/inscription")
-	public ResponseEntity<Utilisateurs> inscrireUtilisateur(@RequestBody Utilisateurs utilisateur) {
-	    
-		try {
-	    	Utilisateurs nouvelUtilisateur = utilisateursService.inscrireUtilisateur(utilisateur);
-	        return ResponseEntity.ok(nouvelUtilisateur);
+	public ResponseEntity<Map<String, String>> inscrireUtilisateur(@RequestBody Utilisateurs utilisateur) {
+	    Map<String, String> response = new HashMap<>();
+	    try {
+	        Utilisateurs nouvelUtilisateur = utilisateursService.inscrireUtilisateur(utilisateur);
+	        return ResponseEntity.ok().body(Collections.singletonMap("message", "Inscription réussie"));
 	    } catch (Exception e) {
-	        return ResponseEntity.badRequest().body(null);
+	        response.put("message", e.getMessage());
+	        return ResponseEntity.badRequest().body(response);
 	    }
 	}
 	

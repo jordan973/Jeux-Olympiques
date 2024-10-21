@@ -30,6 +30,11 @@ public class UtilisateursService {
             throw new Exception("L'adresse email est déjà inscrite.");
         }
         
+        String motDePasse = utilisateur.getMotDePasse();
+        if (!isValidPassword(motDePasse)) {
+            throw new Exception("Le mot de passe doit comporter au moins 8 caractères, inclure une majuscule, une minuscule, un chiffre et un caractère spécial.");
+        }
+        
         utilisateur.setRole("Utilisateur");
         String cleInscription = generateurCle.genererCle();
         utilisateur.setCleInscription(cleInscription);
@@ -72,5 +77,10 @@ public class UtilisateursService {
     
     public Optional<Utilisateurs> recupererUtilisateurParId(Long id) {
         return utilisateursRepository.findById(id);
+    }
+    
+    public boolean isValidPassword(String password) {
+    	String passwordPattern = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*(),.?\":{}|<>+=])(?=\\S+$).{8,}$";
+        return password.matches(passwordPattern);
     }
 }
